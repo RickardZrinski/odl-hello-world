@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- vi: set et smarttab sw=4 tabstop=4: -->
+<!--
+ Necessary TODO: Put your copyright statement here
+
+ This program and the accompanying materials are made available under the
+ terms of the Eclipse Public License v1.0 which accompanies this distribution,
+ and is available at http://www.eclipse.org/legal/epl-v10.html
+-->
+<features name="odl-hello-world-SR2-${project.version}" xmlns="http://karaf.apache.org/xmlns/features/v1.2.0"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://karaf.apache.org/xmlns/features/v1.2.0 http://karaf.apache.org/xmlns/features/v1.2.0">
+
+    <repository>mvn:org.opendaylight.yangtools/features-yangtools/0.6.4-Helium-SR2/xml/features</repository>
+    <repository>mvn:org.opendaylight.controller/features-mdsal/1.1.2-Helium-SR2/xml/features</repository>
+
+    <feature name='odl-hello-world-SR2-all' version='${project.version}' description='OpenDaylight :: hello-world-SR2 :: All'>
+        <feature version='${project.version}'>odl-hello-world-SR2-impl</feature>
+        <feature version='${project.version}'>odl-hello-world-SR2-model</feature>
+    </feature>
+
+    <!-- Basic MD-SAL Provider feature -->
+    <feature name='odl-hello-world-SR2-impl' version='${project.version}' description='OpenDaylight :: hello-world-SR2 :: Provider '>
+        <feature version='1.1.2-Helium-SR2'>odl-mdsal-broker</feature>
+        <feature version='${project.version}'>odl-hello-world-SR2-model</feature>
+        <bundle>mvn:org.opendaylight.controller.samples.hello-world-SR2/hello-world-SR2-impl/${project.version}</bundle>
+    </feature>
+
+    <!-- Basic MD-SAL Model feature -->
+    <feature name='odl-hello-world-SR2-model' version='${project.version}' description='OpenDaylight :: hello-world-SR2 :: Model'>
+        <feature version='0.6.4-Helium-SR2'>odl-yangtools-binding</feature>
+        <feature version='0.6.4-Helium-SR2'>odl-yangtools-models</feature>
+        <bundle>mvn:org.opendaylight.controller.samples.hello-world-SR2/hello-world-SR2-model/${project.version}</bundle>
+    </feature>
+
+        <!--
+        * Config Subsystem example - the config file is your config subsystem configuration
+        <feature name='odl-hello-world-SR2-provider' version='${project.version}' description='OpenDaylight :: hello-world-SR2 :: Provider'>
+            <feature version='1.1.2-Helium-SR2'>odl-mdsal-broker</feature>
+            <bundle>mvn:org.opendaylight.controller.samples.hello-world-SR2/hello-world-SR2-provider/${project.version}</bundle>
+            <configfile finalname="etc/opendaylight/karaf/80-hello-world-SR2.xml">mvn:org.opendaylight.controller.samples.hello-world-SR2/hello-world-SR2-config/${project.version}/xml/config</configfile>
+        </feature>
+        -->
+</features>

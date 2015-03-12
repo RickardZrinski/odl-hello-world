@@ -1,0 +1,21 @@
+module hello-world {
+    yang-version 1;
+    namespace "urn:opendaylight:params:xml:ns:yang:hello-world";
+    prefix "hello-world";
+
+    revision "2015-01-05" {
+        description "Initial revision of hello model";
+    }
+    rpc hello-world {
+        input {
+            leaf name {
+                type string;
+            }
+        }
+        output {
+            leaf greating {
+                type string;
+            }
+        }
+    }
+}
