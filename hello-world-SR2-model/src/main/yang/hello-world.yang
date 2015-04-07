@@ -6,6 +6,30 @@ module hello-world {
     revision "2015-01-05" {
         description "Initial revision of hello model";
     }
+    rpc testing {
+        input {
+            leaf input1 {
+	            type string;
+            }
+            leaf input2 {
+	            type string;
+            }
+        }
+        output {
+            leaf input1 {
+                type string;
+            }
+            leaf input2 {
+                type string;
+            }
+            list things {
+                key "thing-id";
+	            leaf thing-id {
+                    type uint32;
+                }
+            }
+        }
+    }
     rpc hello-world {
         input {
             leaf name {
@@ -15,6 +39,36 @@ module hello-world {
         output {
             leaf greating {
                 type string;
+            }
+        }
+    }
+    rpc get-all-paths {
+        input {
+            leaf node1-mac {
+                type string;
+            }
+            leaf node2-mac {
+                type string;
+            }
+        }
+        output {
+            leaf node1-mac {
+                type string;
+            }
+            leaf node2-mac {
+                type string;
+            }
+            list paths {
+                key "path-id";
+                leaf path-id {
+                    type uint32;
+                }
+                list links {
+                    key "link-id";
+                    leaf link-id {
+                        type string;
+                    }
+                }
             }
         }
     }

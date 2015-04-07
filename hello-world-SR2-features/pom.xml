@@ -50,20 +50,13 @@
           <version>${project.version}</version>
         </dependency>
 
-    <!--
-      Necessary TODO: Put dependencies for configfiles directly referenced
-      in your features.xml file.  For every <configfile> reference in your
-      features.xml file, you need a corresponding dependency here.
-
-      Example (presuming here version is coming from the parent pom):
-      <dependency>
-        <groupId>org.opendaylight.controller.samples.hello-world-SR2</groupId>
-        <artifactId>hello-world-SR2-config</artifactId>
-        <version>${project.version}</version>
-        <type>xml</type>
-        <classifier>config</classifier>
-      </dependency>
-    -->
+        <dependency>
+          <groupId>org.opendaylight.controller.samples.hello-world-SR2</groupId>
+          <artifactId>hello-world-SR2-config</artifactId>
+          <version>${project.version}</version>
+          <type>xml</type>
+          <classifier>config</classifier>
+        </dependency>
 
     <!--
       Optional TODO: Remove TODO comments.
@@ -145,6 +138,30 @@
                   </configuration>
                </execution>
             </executions>
+         </plugin>
+         <plugin>
+           <groupId>org.apache.maven.plugins</groupId>
+           <artifactId>maven-dependency-plugin</artifactId>
+           <executions>
+             <execution>
+                <id>unpack-karaf-resources</id>
+                <goals>
+                  <goal>unpack-dependencies</goal>
+                </goals>
+                <phase>prepare-package</phase>
+                <configuration>
+                  <outputDirectory>${project.build.directory}/assembly</outputDirectory>
+                  <groupId>org.opendaylight.controller</groupId>
+                  <includeArtifactIds>opendaylight-karaf-resources</includeArtifactIds>
+                  <excludes>META-INF\/**</excludes>
+                  <excludeTransitive>true</excludeTransitive>
+                  <overWriteReleases>false</overWriteReleases>
+                  <overWriteSnapshots>true</overWriteSnapshots>
+                  <overWriteIfNewer>true</overWriteIfNewer>
+                  <ignorePermissions>false</ignorePermissions>
+                </configuration>
+             </execution>
+           </executions>
          </plugin>
          <plugin>
             <groupId>org.apache.maven.plugins</groupId>

@@ -16,5 +16,6 @@
     <module>hello-world-SR2-model</module>
     <module>hello-world-SR2-impl</module>
     <module>hello-world-SR2-features</module>
+    <module>hello-world-SR2-config</module>
   </modules>
 </project>
