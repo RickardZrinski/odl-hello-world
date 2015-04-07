@@ -1,2 +1,8 @@
-target/
+**/target/**
+**/target-ide/**
+.classpath
+.settings
+.project
 MANIFEST.MF
+**/yang-gen-sal/**
+**/yang-gen-config/**
