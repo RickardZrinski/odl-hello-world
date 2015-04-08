@@ -8,17 +8,13 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>hello-world-SR2-model</artifactId>
-  <groupId>org.opendaylight.controller.samples.hello-world-SR2</groupId>
-  <version>1.0-SNAPSHOT</version>
   <packaging>bundle</packaging>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <nexusproxy>http://nexus.opendaylight.org/content</nexusproxy>
     <nexus.repository.release>opendaylight.release</nexus.repository.release>
     <nexus.repository.snapshot>opendaylight.release</nexus.repository.snapshot>
-    <yang.version>0.6.4-Helium-SR2</yang.version>
-    <yang.codegen.version>0.6.4-Helium-SR2</yang.codegen.version>
-    <bundle.plugin.version>2.4.0</bundle.plugin.version>
+    <yang.codegen.version>0.6.6-SNAPSHOT</yang.codegen.version>
   </properties>
   <scm>
     <connection>scm:git:ssh://git.opendaylight.org:29418/controller.git</connection>
@@ -42,7 +38,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.5.1</version>
         <inherited>true</inherited>
         <configuration>
           <source>1.7</source>
@@ -52,7 +47,6 @@
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-javadoc-plugin</artifactId>
-        <version>2.8.1</version>
         <configuration>
           <stylesheet>maven</stylesheet>
         </configuration>
@@ -68,7 +62,6 @@
       <plugin>
         <groupId>org.opendaylight.yangtools</groupId>
         <artifactId>yang-maven-plugin</artifactId>
-        <version>${yang.version}</version>
         <executions>
           <execution>
             <goals>
@@ -99,7 +92,6 @@
       <plugin>
         <groupId>org.codehaus.mojo</groupId>
         <artifactId>build-helper-maven-plugin</artifactId>
-        <version>1.7</version>
         <executions>
           <execution>
             <phase>generate-sources</phase>
@@ -223,7 +215,6 @@
     <dependency>
       <groupId>org.opendaylight.yangtools</groupId>
       <artifactId>yang-binding</artifactId>
-      <version>${yang.codegen.version}</version>
     </dependency>
   </dependencies>
 </project>
